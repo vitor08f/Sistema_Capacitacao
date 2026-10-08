@@ -1,3 +1,5 @@
+#DATA-BASE Relacional PostgerSQL 
+
 CREATE DATABASE advocacia_db
 
 CREATE TYPE area_assunto_enum AS ENUM (
