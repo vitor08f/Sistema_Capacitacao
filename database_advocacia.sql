@@ -1,4 +1,4 @@
-#DATA-BASE Relacional PostgerSQL 
+--DATA-BASE Relacional PostgreSQL 
 
 CREATE DATABASE advocacia_db
 
