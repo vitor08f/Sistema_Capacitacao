@@ -26,8 +26,8 @@ CREATE TABLE leads (
     area_assunto area_assunto_enum NOT NULL,
     formato formato_enum NOT NULL,
     data_atendimento DATE NOT NULL,
-    horario TIME NOT NULL
-    mensagem TEXT,
+    horario TIME NOT NULL,
+    mensagem TEXT
 );
 
 CREATE TABLE agendamento(
@@ -38,16 +38,23 @@ CREATE TABLE agendamento(
     status_agendamento VARCHAR(20) DEFAULT 'confirmado',
 
     CONSTRAINT fk_agendamento_lead
-        FOREIGN KEY (lead_id) REFERENCES leads (id_lead) ON DELETE RESTRICT,
+        FOREIGN KEY (lead_id) REFERENCES leads (id_lead) ON DELETE RESTRICT
 
 );
 
-CREATE INDEX idx_agendamentos_lead ON agendamentos (lead_id);
+CREATE INDEX idx_agendamentos_lead ON agendamento (lead_id);
  
 -- Um horário só pode ter UM agendamento ativo; cancelados liberam o horário
 CREATE UNIQUE INDEX horario_unico
-    ON agendamentos (data_agendamento, horario)
+    ON agendamento (data_agendamento, horario)
     WHERE status_agendamento <> 'cancelado';
 
+CREATE TABLE bloqueios (
+    id_bloqueio   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    data_bloqueio DATE NOT NULL,
+    horario_inicio TIME,   -- NULL = dia inteiro
+    horario_fim    TIME,
+    motivo        VARCHAR(100),
+    CHECK (horario_fim IS NULL OR horario_fim > horario_inicio)
+);
 
-	
