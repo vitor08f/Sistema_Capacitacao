@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Painel administrativo | Agenda</title>
+  <link rel="stylesheet" href="/static/admin.css">
+  <script defer src="/static/admin.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header><div><h1>Painel de agendamentos</h1><p>Gerenciamento interno da agenda e dos contatos.</p></div><button id="recarregar">Atualizar lista</button></header>
+    <p id="mensagem-status" role="status" aria-live="polite"></p>
+    <section><h2>Agendamentos</h2><div class="table-scroll"><table><thead><tr><th>Data e hora</th><th>Cliente</th><th>Contato</th><th>Assunto</th><th>Status</th><th>Ação</th></tr></thead><tbody id="agendamentos"></tbody></table></div></section>
+    <section><h2>Bloquear agenda</h2><form id="formulario-bloqueio"><label>Data<input name="data_bloqueio" type="date" required></label><label>Início<input name="hora_inicio" type="time"></label><label>Fim<input name="hora_fim" type="time"></label><label>Motivo<input name="motivo" maxlength="120" required placeholder="Almoço, feriado, folga..."></label><button>Salvar bloqueio</button><p class="hint">Deixe início e fim vazios para bloquear o dia inteiro.</p></form></section>
+    <section><h2>Cadastrar agendamento manual</h2><form id="formulario-agendamento"><label>Contato<select name="contato_id" id="contato_id" required></select></label><label>Data<input name="data_agendamento" type="date" required></label><label>Horário<input name="hora_agendamento" type="time" required></label><button>Cadastrar agendamento</button></form></section>
+    <section><h2>Contatos</h2><ul id="contatos" class="contatos"></ul></section>
+  </main>
+</body>
+</html>
