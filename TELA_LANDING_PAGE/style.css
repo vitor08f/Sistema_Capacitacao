@@ -92,8 +92,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .consent{align-items:flex-start;font-size:.9rem}
 input[type=radio],input[type=checkbox]{width:auto;accent-color:var(--petrol);margin-top:.2rem}
 .trap{position:absolute;left:-999px}
-#status{margin:0;min-height:1.5em;font-weight:600}
-#status.erro{color:#a3261f}
+#form-feedback{margin:.75rem 0;min-height:1.5em;font-weight:600}
+#form-feedback.erro{color:#a3261f}
+#form-feedback.sucesso{color:#246b45}
 @media (min-width:48rem){.contact-grid{grid-template-columns:1fr 1.3fr;gap:4rem}.row{grid-template-columns:1fr 1fr}}
 
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

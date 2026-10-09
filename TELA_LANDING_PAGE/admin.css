@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5f6f3; color: #14262b; font: 16px/1.5 system-ui, sans-serif; }
+.wrap { width: min(1100px, calc(100% - 2rem)); margin: 2rem auto; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+section { background: #fff; padding: 1.25rem; margin-block: 1.25rem; border: 1px solid #d5dad5; border-radius: 6px; }
+button { cursor: pointer; background: #1f4247; color: #fff; border: 0; border-radius: 4px; padding: .7rem 1rem; font: inherit; }
+label { display: grid; gap: .25rem; }
+input, select { font: inherit; padding: .6rem; border: 1px solid #8b9a98; border-radius: 4px; }
+form { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; }
+.hint { flex-basis: 100%; margin: 0; color: #51636a; }
+.table-scroll { overflow: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: .65rem; border-bottom: 1px solid #d5dad5; white-space: nowrap; }
+.contatos { padding-left: 1.25rem; }
+.contatos li { padding: .4rem 0; }
+#mensagem-status { min-height: 1.5rem; font-weight: 600; }
+#mensagem-status.erro { color: #a3261f; }
+@media (max-width: 700px) {
+  header { align-items: flex-start; flex-direction: column; }
+  form { align-items: stretch; flex-direction: column; }
+  form label { width: 100%; }
+}
