@@ -1,60 +1,36 @@
---DATABASE Relacional PostgreSQL 
-
-CREATE DATABASE advocacia_db
-\c advocacia_db
-
-CREATE TYPE area_assunto_enum AS ENUM (
-    'Civil',
-    'Familia e Sucessoes',
-    'Trabalhista',
-    'Empresarial',
-    'Previdenciario',
-    'Consumidor',
-	'Outro'
+-- PostgreSQL 14+. Execute conectado ao banco advocacia_db.
+CREATE TABLE IF NOT EXISTS leads (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(120) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    telefone VARCHAR(30) NOT NULL,
+    area_assunto VARCHAR(40) NOT NULL,
+    formato VARCHAR(20) NOT NULL CHECK (formato IN ('Presencial', 'Remoto')),
+    mensagem TEXT,
+    consentimento_lgpd BOOLEAN NOT NULL CHECK (consentimento_lgpd = TRUE),
+    consentido_em TIMESTAMPTZ NOT NULL,
+    criado_em TIMESTAMPTZ NOT NULL
 );
 
-CREATE TYPE formato_enum AS ENUM (
-    'Presencial',
-    'Remoto'
+CREATE TABLE IF NOT EXISTS agendamentos (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    lead_id BIGINT NOT NULL REFERENCES leads(id) ON DELETE RESTRICT,
+    inicio TIMESTAMPTZ NOT NULL,
+    fim TIMESTAMPTZ NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'solicitado'
+        CHECK (status IN ('solicitado', 'aprovado', 'cancelado')),
+    criado_em TIMESTAMPTZ NOT NULL,
+    CHECK (fim > inicio)
 );
+CREATE INDEX IF NOT EXISTS ix_agendamentos_lead_id ON agendamentos (lead_id);
+CREATE UNIQUE INDEX IF NOT EXISTS uq_agendamentos_inicio_ativo
+    ON agendamentos (inicio) WHERE status <> 'cancelado';
 
-CREATE TABLE leads (
-    id_lead INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    telefone VARCHAR(20) NOT NULL,
-    area_assunto area_assunto_enum NOT NULL,
-    formato formato_enum NOT NULL,
-    data_atendimento DATE NOT NULL,
-    horario TIME NOT NULL,
-    mensagem TEXT
+CREATE TABLE IF NOT EXISTS bloqueios (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    inicio TIMESTAMPTZ NOT NULL,
+    fim TIMESTAMPTZ,
+    motivo VARCHAR(120) NOT NULL,
+    criado_em TIMESTAMPTZ NOT NULL,
+    CHECK (fim IS NULL OR fim > inicio)
 );
-
-CREATE TABLE agendamento(
-	id_agendamento INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	lead_id INT NOT NULL,
-    data_agendamento DATE NOT NULL,
-    horario TIME NOT NULL,
-    status_agendamento VARCHAR(20) DEFAULT 'confirmado',
-
-    CONSTRAINT fk_agendamento_lead
-        FOREIGN KEY (lead_id) REFERENCES leads (id_lead) ON DELETE RESTRICT
-
-);
-
-CREATE INDEX idx_agendamentos_lead ON agendamento (lead_id);
- 
--- Um horário só pode ter UM agendamento ativo; cancelados liberam o horário
-CREATE UNIQUE INDEX horario_unico
-    ON agendamento (data_agendamento, horario)
-    WHERE status_agendamento <> 'cancelado';
-
-CREATE TABLE bloqueios (
-    id_bloqueio   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    data_bloqueio DATE NOT NULL,
-    horario_inicio TIME,   -- NULL = dia inteiro
-    horario_fim    TIME,
-    motivo        VARCHAR(100),
-    CHECK (horario_fim IS NULL OR horario_fim > horario_inicio)
-);
-
