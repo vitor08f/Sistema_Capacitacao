@@ -116,10 +116,15 @@
       if (numeroConsulta !== numeroConsultaDisponibilidade || dataConsultada !== campoData.value) return;
       if (!respostaHttp.ok) throw new Error(resposta.detail || "N\u00e3o foi poss\u00edvel consultar a agenda.");
       const horariosDisponiveis = resposta.horarios ?? resposta.horarios_disponiveis ?? [];
-      seletorHorario.replaceChildren(new Option(horariosDisponiveis.length ? "Selecione" : "Nenhum hor\u00e1rio dispon\u00edvel", ""));
-      horariosDisponiveis.forEach((horario) => seletorHorario.add(new Option(horario, horario)));
-      seletorHorario.disabled = horariosDisponiveis.length === 0;
-      if (!horariosDisponiveis.length) exibirFeedback("N\u00e3o h\u00e1 hor\u00e1rios livres nesta data. Escolha outro dia \u00fatil.");
+      if (horariosDisponiveis.length === 0) {
+        seletorHorario.replaceChildren(new Option("Nenhum hor\u00e1rio dispon\u00edvel para esta data", ""));
+        seletorHorario.disabled = true;
+        exibirFeedback("N\u00e3o h\u00e1 hor\u00e1rios livres nesta data. Escolha outro dia \u00fatil.");
+      } else {
+        seletorHorario.replaceChildren(new Option("Selecione", ""));
+        horariosDisponiveis.forEach((horario) => seletorHorario.add(new Option(horario, horario)));
+        seletorHorario.disabled = false;
+      }
     } catch (erro) {
       if (numeroConsulta !== numeroConsultaDisponibilidade) return;
       seletorHorario.replaceChildren(new Option("Falha ao consultar", ""));
@@ -154,8 +159,7 @@
   seletorHorario.addEventListener("change", () => { limparFeedback(); atualizarEstadoEnvio(); });
 
   const atualizarValidadeNome = () => {
-    const palavras = campoNome.value.trim().split(/\s+/).filter(Boolean);
-    campoNome.setCustomValidity(palavras.length >= 2 ? "" : "Informe seu nome e sobrenome.");
+    campoNome.setCustomValidity(campoNome.value.trim().length >= 3 ? "" : "Informe seu nome completo com pelo menos 3 caracteres.");
   };
   const atualizarValidadeEmail = () => {
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(campoEmail.value.trim());
@@ -233,7 +237,7 @@
     const email = campoEmail.value.trim();
 
     const erros = [
-      { valido: campoNome.value.trim().length > 0, mensagem: "Por favor, preencha seu nome completo.", campo: campoNome, etapa: 2 },
+      { valido: campoNome.value.trim().length >= 3, mensagem: "Por favor, preencha seu nome completo com pelo menos 3 caracteres.", campo: campoNome, etapa: 2 },
       { valido: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email), mensagem: "Informe um endereço de e-mail válido.", campo: campoEmail, etapa: 2 },
       { valido: telefoneDigitos.length >= 10 && telefoneDigitos.length <= 11, mensagem: "Informe um número de telefone/WhatsApp válido.", campo: campoTelefone, etapa: 2 },
       { valido: Boolean(area), mensagem: "Selecione o assunto do atendimento.", campo: formulario.elements.area_assunto, etapa: 0 },
