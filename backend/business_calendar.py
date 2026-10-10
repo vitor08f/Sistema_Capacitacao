@@ -1,5 +1,5 @@
 from datetime import date, timedelta
-from .settings import settings
+from .settings import configuracoes
 
 
 def easter_sunday(year: int) -> date:
@@ -24,7 +24,7 @@ def holidays_for_year(year: int) -> set[date]:
     easter = easter_sunday(year)
     result.add(easter - timedelta(days=2))  
     result.add(easter + timedelta(days=60)) 
-    for raw in settings.business_holidays.split(","):
+    for raw in configuracoes.feriados_empresa.split(","):
         try:
             custom = date.fromisoformat(raw.strip())
         except ValueError:

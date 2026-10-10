@@ -1,7 +1,7 @@
 import re
 from datetime import date, time
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 
 def clean_text(value: str) -> str:
@@ -11,11 +11,11 @@ def clean_text(value: str) -> str:
 
 class LeadCreate(BaseModel):
     model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
-    nome: str = Field(min_length=3, max_length=120)
+    nome: str = Field(min_length=3, max_length=120, validation_alias=AliasChoices("nome", "nome_completo"))
     email: EmailStr
     telefone: str = Field(min_length=10, max_length=30)
-    area: Literal["Direito civil", "Família e sucessões", "Trabalhista", "Empresarial", "Previdenciário", "Consumidor", "Outro"]
-    formato: Literal["Presencial", "Online"]
+    area: Literal["Direito civil", "Família e sucessões", "Trabalhista", "Empresarial", "Previdenciário", "Consumidor", "Outro"] = Field(validation_alias=AliasChoices("area", "area_assunto"))
+    formato: Literal["Presencial", "Online"] = Field(validation_alias=AliasChoices("formato", "formato_atendimento"))
     mensagem: str | None = Field(default=None, max_length=800)
     consentimento_lgpd: Literal[True]
 
@@ -42,13 +42,13 @@ class LeadCreate(BaseModel):
 
 class AppointmentCreate(BaseModel):
     model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
-    nome: str = Field(min_length=3, max_length=120)
+    nome: str = Field(min_length=3, max_length=120, validation_alias=AliasChoices("nome", "nome_completo"))
     email: EmailStr
     telefone: str = Field(min_length=10, max_length=30)
-    area: Literal["Direito civil", "Família e sucessões", "Trabalhista", "Empresarial", "Previdenciário", "Consumidor", "Outro"]
-    formato: Literal["Presencial", "Online"]
-    data: date
-    hora: time
+    area: Literal["Direito civil", "Família e sucessões", "Trabalhista", "Empresarial", "Previdenciário", "Consumidor", "Outro"] = Field(validation_alias=AliasChoices("area", "area_assunto"))
+    formato: Literal["Presencial", "Online"] = Field(validation_alias=AliasChoices("formato", "formato_atendimento"))
+    data: date = Field(validation_alias=AliasChoices("data", "data_agendamento"))
+    hora: time = Field(validation_alias=AliasChoices("hora", "hora_agendamento"))
     mensagem: str | None = Field(default=None, max_length=800)
     consentimento_lgpd: Literal[True]
 
@@ -79,12 +79,12 @@ class StatusUpdate(BaseModel):
 
 class ManualAppointment(BaseModel):
     lead_id: int = Field(gt=0)
-    data: date
-    hora: time
+    data: date = Field(validation_alias=AliasChoices("data", "data_agendamento"))
+    hora: time = Field(validation_alias=AliasChoices("hora", "hora_agendamento"))
 
 
 class BlockCreate(BaseModel):
-    data: date
+    data: date = Field(validation_alias=AliasChoices("data", "data_agendamento"))
     hora_inicio: time | None = None
     hora_fim: time | None = None
     motivo: str = Field(min_length=2, max_length=120)
