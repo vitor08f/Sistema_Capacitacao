@@ -41,8 +41,8 @@
         <ul>
           <li><a href="#inicio">Home</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
           <li><a href="#contato">Entre em contato</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         </ul>
       </nav>
     </div>
@@ -54,9 +54,11 @@
           <h1 id="titulo-hero">Orientações jurídicas claras para decisões importantes.</h1>
           <p class="lead">Esclarecemos seus direitos de forma simples, conduzindo cada caso com atenção, sigilo e
             profissionalismo.</p>
+            
           <p><a class="btn" href="#contato">Agendar minha consulta</a></p>
         </div>
         <aside class="panel" aria-label="Como atendemos">
+          <img id="logoff" src="/Imgs/logo_sem_fundo.png" alt="Pereira & Monteiro Advocacia">
           <h2>Nosso funcionamento</h2>
           <dl>
             <div>
@@ -181,31 +183,6 @@
         </div>
       </div>
     </section>
-    <section id="perguntas-frequentes" class="section" aria-labelledby="titulo-faq">
-      <div class="wrap narrow">
-        <h2 id="titulo-faq">Perguntas frequentes</h2>
-        <details>
-          <summary>Como funciona a primeira consulta?</summary>
-          <p>Ouvimos seu caso, indicamos opções e explicamos honorários antes de qualquer contratação.</p>
-        </details>
-        <details>
-          <summary>Quais documentos devo levar?</summary>
-          <p>Documento de identificação, comprovante de residência e tudo que se relacione ao caso.</p>
-        </details>
-        <details>
-          <summary>Como são cobrados os honorários?</summary>
-          <p>O valor e a forma de pagamento são definidos em contrato escrito.</p>
-        </details>
-        <details>
-          <summary>Vocês atendem online?</summary>
-          <p>Sim. Atendemos por videochamada e recebemos documentos por e-mail.</p>
-        </details>
-        <details>
-          <summary>Minhas informações são confidenciais?</summary>
-          <p>As informações são tratadas conforme o sigilo profissional e a política de privacidade.</p>
-        </details>
-      </div>
-    </section>
     <section id="contato" class="section alt" aria-labelledby="titulo-contato">
       <div class="wrap contact-grid">
         <div>
@@ -232,7 +209,7 @@
                 <option>Consumidor</option>
                 <option>Outro</option>
               </select></div>
-            <fieldset class="choices">
+              <fieldset class="choices">
               <legend>Formato do atendimento</legend><label class="opt"><input type="radio" name="formato_atendimento"
                   value="Presencial" checked> Presencial</label><label class="opt"><input type="radio" name="formato_atendimento"
                   value="Online"> Videochamada</label>
@@ -258,17 +235,18 @@
               <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email"
                   autocomplete="email" required maxlength="254"></div>
               <div class="field"><label for="telefone">Telefone com DDD</label><input id="telefone" name="telefone"
-                  type="tel" autocomplete="tel" inputmode="tel" required minlength="14" maxlength="16"
+                type="tel" autocomplete="tel" inputmode="tel" required minlength="14" maxlength="16"
                   placeholder="(11) 90000-0000"></div>
             </div>
             <div class="field"><label for="mensagem">Resumo do caso <span
                   class="opt-text">(opcional)</span></label><textarea id="mensagem" name="mensagem" rows="3"
                 maxlength="800"></textarea></div>
             <div class="trap" aria-hidden="true"><label>Não preencha <input name="site" type="text" tabindex="-1"
-                  autocomplete="off"></label></div>
+              autocomplete="off"></label></div>
             <label class="consent"><input type="checkbox" name="consentimento_lgpd" required>
               <span>Li a política de privacidade e autorizo o uso dos meus dados para retorno sobre esta solicitação.</span>
             </label>
+              
           </fieldset>
           <div class="actions"><button class="back" type="button" data-back hidden>Voltar</button><button class="cta"
               type="submit">Continuar</button></div>
@@ -277,8 +255,34 @@
         </form>
       </div>
     </section>
+    
   </main>
   <footer class="site-footer">
+    <section id="perguntas-frequentes" class="section" aria-labelledby="titulo-faq">
+                <div class="wrap narrow">
+                  <h2 id="titulo-faq">Perguntas frequentes</h2>
+                  <details>
+                    <summary>Como funciona a primeira consulta?</summary>
+                    <p>Ouvimos seu caso, indicamos opções e explicamos honorários antes de qualquer contratação.</p>
+                  </details>
+                  <details>
+                    <summary>Quais documentos devo levar?</summary>
+                    <p>Documento de identificação, comprovante de residência e tudo que se relacione ao caso.</p>
+                  </details>
+                  <details>
+                    <summary>Como são cobrados os honorários?</summary>
+                    <p>O valor e a forma de pagamento são definidos em contrato escrito.</p>
+                  </details>
+                  <details>
+                    <summary>Vocês atendem online?</summary>
+                    <p>Sim. Atendemos por videochamada e recebemos documentos por e-mail.</p>
+                  </details>
+                  <details>
+                    <summary>Minhas informações são confidenciais?</summary>
+                    <p>As informações são tratadas conforme o sigilo profissional e a política de privacidade.</p>
+                  </details>
+                </div>
+              </section>
     <div class="wrap foot-grid">
       <section aria-labelledby="rodape-escritorio">
         <h2 id="rodape-escritorio">Pereira &amp; Monteiro Advocacia</h2>
