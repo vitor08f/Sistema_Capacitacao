@@ -223,3 +223,24 @@ a.cta{display:inline-block;text-decoration:none}
 
 }
 @media (min-width:48rem){.servico-topo{grid-template-columns:1.5fr 1fr;gap:3rem}}   
+
+.historia-texto{
+  display:flex;
+  align-items:flex-start;
+  gap:3rem;
+}
+.historia-texto img{
+  flex:0 1 540px;
+  min-width:0;
+  max-width:100%;
+  height:auto;
+}
+.historia-conteudo{
+  flex:1 1 0;
+  min-width:0;
+}
+.historia-conteudo h2{margin-top:0}
+
+@media (max-width:47.99rem){
+  .historia-texto{flex-direction:column;gap:1.5rem}
+}

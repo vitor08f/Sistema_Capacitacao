@@ -123,7 +123,7 @@ input[type=radio],input[type=checkbox]{width:auto;accent-color:var(--petrol);mar
 .quotes figcaption{font-size:.9rem;color:#51636a}
 @media (min-width:48rem){.trust-grid{grid-template-columns:1fr auto}.quotes{grid-template-columns:repeat(3,1fr)}}
 
-/* ===== Imagens da landing page ===== */
+
 .hero-side{display:grid;gap:1.75rem}
 .hero-img{display:inline-block;width:100%;max-width:24rem;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:4px;justify-self:start; }
 .area-img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:4px;margin-bottom:1rem}
