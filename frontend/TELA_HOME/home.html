@@ -33,7 +33,7 @@
       <a class="brand" href="home.html" aria-label="Pereira &amp; Monteiro Advocacia, página inicial"><span class="logo" aria-hidden="true">P&amp;M</span><span>Pereira &amp; Monteiro <small>Advocacia</small></span></a>
       <nav aria-label="Principal">
         <ul>
-          <li><a href="/home.html" aria-current="page">Home</a></li>
+          <li><a href="/frontend/TELA_HOME/home.html" aria-current="page">Home</a></li>
           <li><a href="/frontend/TELA_QUEM_SOMOS/qm_somos.html">Quem somos</a></li>
           <li><a href="/frontend/TELA_SERVIÇOS/servicos.html">Serviços</a></li>
           <li><a href="/frontend/TELA_CONTATO/contato.html">Contato</a></li>
@@ -185,77 +185,12 @@
           </article>
         </div>
         <p class="nota">Cada caso é único: resultados anteriores não garantem resultados futuros.</p>
+        <h2>
+          <a href="/frontend/TELA_CONTATO/contato.html">Agende sua consulta já!</a>
+        </h2>
+          
       </div>
-    </section>
-    <section id="contato" class="section alt" aria-labelledby="titulo-contato">
-      <div class="wrap contact-grid">
-        <div>
-          <h2 id="titulo-contato">Peça um horário para conversar</h2>
-          <p>Escolha uma data e um horário disponíveis. O escritório retornará para confirmar a solicitação. Atendimento de segunda a sexta, das 9h às 18h.</p>
-          <p><a href="/frontend/TELA_LANDING_PAGE/politica-de-privacidade.html">Leia a política de privacidade</a></p>
-        </div>
-        <form id="form-contato" novalidate>
-          <ol class="crumbs" aria-label="Etapas do agendamento" hidden>
-            <li><button type="button" data-go="0">Assunto</button></li>
-            <li><button type="button" data-go="1">Horário</button></li>
-            <li><button type="button" data-go="2">Seus dados</button></li>
-          </ol>
-          <fieldset class="step">
-            <legend tabindex="-1">Qual é o assunto?</legend>
-            <div class="field"><label for="area">Área do assunto</label><select id="area" name="area_assunto" required>
-                <option value="">Selecione</option>
-                <option>Direito civil</option>
-                <option>Família e sucessões</option>
-                <option>Trabalhista</option>
-                <option>Empresarial</option>
-                <option>Previdenciário</option>
-                <option>Consumidor</option>
-                <option>Outro</option>
-              </select></div>
-            <fieldset class="choices">
-              <legend>Formato do atendimento</legend><label class="opt"><input type="radio" name="formato_atendimento"
-                  value="Presencial" checked> Presencial</label><label class="opt"><input type="radio" name="formato_atendimento"
-                  value="Online"> Videochamada</label>
-            </fieldset>
-          </fieldset>
-          <fieldset class="step">
-            <legend tabindex="-1">Quando fica melhor para você?</legend>
-            <div class="row">
-              <div class="field"><label for="data">Data preferida</label><input id="data" name="data_agendamento" type="date"
-                  required></div>
-              <div class="field"><label for="hora">Horário disponível</label><select id="hora" name="hora_agendamento" required
-                  disabled>
-                  <option value="">Selecione uma data primeiro</option>
-                </select></div>
-            </div>
-            <p class="hint">Os horários livres aparecem após a consulta da data selecionada.</p>
-          </fieldset>
-          <fieldset class="step">
-            <legend tabindex="-1">Como podemos falar com você?</legend>
-            <div class="field"><label for="nome">Nome completo</label><input id="nome" name="nome_completo" type="text"
-                autocomplete="name" required minlength="3" maxlength="120"></div>
-            <div class="row">
-              <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email"
-                  autocomplete="email" required maxlength="254"></div>
-              <div class="field"><label for="telefone">Telefone com DDD</label><input id="telefone" name="telefone"
-                  type="tel" autocomplete="tel" inputmode="tel" required minlength="14" maxlength="16"
-                  placeholder="(11) 90000-0000"></div>
-            </div>
-            <div class="field"><label for="mensagem">Resumo do caso <span
-                  class="opt-text">(opcional)</span></label><textarea id="mensagem" name="mensagem" rows="3"
-                maxlength="800"></textarea></div>
-            <div class="trap" aria-hidden="true"><label>Não preencha <input name="site" type="text" tabindex="-1"
-                  autocomplete="off"></label></div>
-            <label class="consent"><input type="checkbox" name="consentimento_lgpd" required>
-              <span>Li a política de privacidade e autorizo o uso dos meus dados para retorno sobre esta solicitação.</span>
-            </label>
-          </fieldset>
-          <div class="actions"><button class="back" type="button" data-back hidden>Voltar</button><button class="cta"
-              type="submit">Continuar</button></div>
-          <p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
-          <p class="hint">Evite incluir informações sensíveis no resumo inicial.</p>
-        </form>
-      </div>
+      
     </section>
   </main>
   <footer class="site-footer">

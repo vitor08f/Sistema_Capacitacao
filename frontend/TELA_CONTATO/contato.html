@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="\frontend\style_site.css">
-  <script defer src="script.js"></script>
+  <script defer src="\frontend\TELA_LANDING_PAGE\script.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LegalService","name":"Pereira & Monteiro Advocacia","url":"https://www.pereiramonteiro.adv.br/","telephone":"+55-11-4000-0000","email":"contato@pereiramonteiro.adv.br","address":{"@type":"PostalAddress","streetAddress":"Rua Exemplo, 123, sala 45","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"openingHours":"Mo-Fr 09:00-18:00"}</script>
 </head>
 <body>
@@ -45,6 +45,7 @@
     <section class="page-hero" aria-labelledby="titulo-pagina">
       <div class="wrap">
         <nav class="crumb-nav" aria-label="Você está em"><a href="home.html">Home</a> / <span>Contato</span></nav>
+        <img id="logoff" src="/Imgs/logo_sem_fundo.png" alt="Pereira & Monteiro Advocacia">
         <h1 id="titulo-pagina">Contato</h1>
         <p class="lead">Escolha uma data e um horário e retornaremos em até 1 dia útil para confirmar.</p>
       </div>
@@ -61,7 +62,7 @@
             <div><dt>Horário</dt><dd>Segunda a sexta, das 9h às 18h</dd></div>
             <div><dt>Formato</dt><dd>Presencial ou por videochamada</dd></div>
           </dl>
-          <p><a href="politica-de-privacidade.html">Leia a política de privacidade</a></p>
+          <h3><a href="politica-de-privacidade.html">Leia a política de privacidade</a></h3>
         </div>
         <form id="form-contato" novalidate>
           <ol class="crumbs" aria-label="Etapas do agendamento" hidden>
@@ -154,15 +155,15 @@
         <h2 id="rodape-escritorio">Pereira &amp; Monteiro Advocacia</h2>
         <p>Assessoria jurídica preventiva e contenciosa para pessoas e empresas.</p>
         <p>OAB/SP nº 00.000</p>
-        <p><a href="politica-de-privacidade.html">Política de privacidade</a></p>
+        <p><a href="/frontend/TELA_LANDING_PAGE/politica-de-privacidade.html">Política de privacidade</a></p>
       </section>
       <section aria-labelledby="rodape-paginas">
         <h2 id="rodape-paginas">Páginas</h2>
         <ul class="lista-rodape">
-          <li><a href="home.html">Home</a></li>
-          <li><a href="qm_somos.html">Quem somos</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="contato.html">Contato</a></li>
+          <li><a href="/frontend/TELA_HOME/home.html">Home</a></li>
+          <li><a href="/frontend/TELA_QUEM_SOMOS/qm_somos.html">Quem somos</a></li>
+          <li><a href="/frontend/TELA_SERVICOS/servicos.html">Serviços</a></li>
+          <li><a href="/frontend/TELA_CONTATO/contato.html">Contato</a></li>
         </ul>
       </section>
       <section aria-labelledby="rodape-contato">

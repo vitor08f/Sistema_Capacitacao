@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--ink:#14262b;--petrol:#1f4247;--paper:#f5f6f3;--line:#d5dad5;--bronze:#d9b779;--bronze-d:#7d5f27;--copper:#a5471b;--muted:#51636a}
+*,*::before,*::after{box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+
+/* Estrutura (seletores com main.wrap para vencer o style.css da landing page, que carrega depois) */
+main.wrap{width:min(1100px,calc(100% - 2rem));max-width:none;margin:1.5rem auto 4rem;padding:0}
+
+/* Cabeçalho */
+main.wrap>header{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.75rem 2rem;border-radius:10px;border-bottom:4px solid var(--bronze);background:var(--petrol);color:#f2f4f1}
+main.wrap>header h1{margin:0 0 .25rem;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em;line-height:1.2;color:#fff}
+main.wrap>header p{margin:0;max-width:none;color:#c3d0cd}
+
+/* Botões */
+main.wrap button{cursor:pointer;border:0;border-radius:6px;padding:.75rem 1.25rem;font:600 .95rem 'Inter',system-ui,sans-serif;background:var(--petrol);color:#fff;transition:background-color .2s,transform .1s}
+main.wrap button:active{transform:translateY(1px)}
+#recarregar{background:var(--bronze);color:var(--ink)}
+#recarregar:hover{background:#ecd29f}
+main.wrap form button{background:var(--copper)}
+main.wrap form button:hover{background:#7f3412}
+
+/* Mensagem de status */
+#mensagem-status{min-height:1.5rem;max-width:none;margin:1rem 0 0;font-weight:600}
+#mensagem-status:not(:empty){padding:.75rem 1rem;border:1px solid #bcd9c8;border-radius:8px;background:#e7f2ec;color:#1d5a3a}
+#mensagem-status.erro:not(:empty){border-color:#e3b9b5;background:#fbeceb;color:#a3261f}
+
+/* Cartões das seções */
+main.wrap section{margin:1.25rem 0;padding:1.5rem 1.75rem;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 1px 2px rgb(20 38 43/.05)}
+main.wrap section h2{display:flex;align-items:center;gap:.6rem;margin:0 0 1.1rem;font-size:1.25rem;line-height:1.2}
+main.wrap section h2::before{content:"";flex:none;width:4px;height:1.1em;border-radius:2px;background:var(--bronze)}
+
+/* Tabela */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+main.wrap table{width:100%;min-width:46rem;border-collapse:collapse;text-align:left;font-size:.95rem}
+main.wrap thead th{padding:.75rem 1rem;border-bottom:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+main.wrap tbody td{padding:.8rem 1rem;border-bottom:1px solid #eaeeea;vertical-align:middle;white-space:nowrap}
+main.wrap tbody tr:nth-child(even){background:#fafbfa}
+main.wrap tbody tr:hover{background:#f1f5f2}
+main.wrap tbody tr:last-child td{border-bottom:0}
+#agendamentos td:first-child{font-weight:600;color:var(--petrol)}
+#agendamentos td:nth-child(3){color:var(--muted);font-size:.9rem}
+#agendamentos td:nth-child(5){font-weight:700;text-transform:capitalize}
+#agendamentos:empty::after{content:"Nenhum agendamento para mostrar.";display:block;padding:1.25rem 1rem;color:var(--muted)}
+
+/* Campos e formulários */
+main.wrap input,main.wrap select{width:auto;max-width:100%;padding:.65rem .8rem;border:1px solid #b8c2c0;border-radius:6px;background:#fff;color:var(--ink);font:inherit}
+main.wrap input:focus-visible,main.wrap select:focus-visible{outline:3px solid rgb(217 183 121/.55);outline-offset:0;border-color:var(--petrol)}
+main.wrap form{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1rem 1.25rem}
+main.wrap form label{display:grid;gap:.35rem;font-size:.85rem;font-weight:600;color:var(--muted)}
+main.wrap form input[name="motivo"]{min-width:16rem}
+#contato_id{min-width:18rem}
+main.wrap form .hint{flex-basis:100%;margin:0;max-width:none;font-size:.88rem;font-weight:400;color:var(--muted)}
+#agendamentos select{padding:.45rem .6rem;font-size:.9rem}
+
+/* Lista de contatos */
+main.wrap .contatos{margin:0;padding:0;list-style:none;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+main.wrap .contatos:empty{display:none}
+main.wrap .contatos li{padding:.8rem 1rem;border-bottom:1px solid #eaeeea;color:#2c4046}
+main.wrap .contatos li:last-child{border-bottom:0}
+main.wrap .contatos li:nth-child(even){background:#fafbfa}
+main.wrap .contatos li:hover{background:#f1f5f2}
+
+/* Status coloridos (opcional: só valem se o admin.js adicionar a classe status-...) */
+#agendamentos .status-solicitado{color:#8a5a00}
+#agendamentos .status-aprovado{color:#1d5a3a}
+#agendamentos .status-cancelado{color:#a3261f}
+
+@media (max-width:700px){
+  main.wrap>header{flex-direction:column;align-items:flex-start;padding:1.5rem}
+  main.wrap section{padding:1.25rem 1rem}
+  main.wrap form{flex-direction:column;align-items:stretch}
+  main.wrap form label,main.wrap form input,main.wrap form select,main.wrap form button{width:100%}
+  main.wrap form input[name="motivo"],#contato_id{min-width:0}
+}
